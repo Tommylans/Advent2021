@@ -4,13 +4,13 @@ import (
 	"fmt"
 )
 
-func Start() {
-	bakfiets := parseInput()
+func StartPart1() {
+	input := parseInput()
 
 	increases := 0
 
-	for i := 1; i < len(bakfiets); i++ {
-		if bakfiets[i] > bakfiets[i-1] {
+	for i := 1; i < len(input); i++ {
+		if input[i] > input[i-1] {
 			increases++
 		}
 	}

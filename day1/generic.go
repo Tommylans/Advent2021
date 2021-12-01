@@ -1,20 +1,20 @@
 package day1
 
 import (
+	"bufio"
 	"os"
 	"strconv"
-	"strings"
 )
 
-func parseInput() []int {
-	data, _ := os.ReadFile("./day1/input.txt")
-	fileContent := string(data)
+func parseInput() (out []int) {
+	file, _ := os.Open("./day1/input.txt")
+	defer file.Close()
 
-	splitted := strings.Split(fileContent, "\n")
-	bakfiets := make([]int, len(splitted))
-	for i, s := range splitted {
-		bakfiets[i], _ = strconv.Atoi(s)
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		parsedNumber, _ := strconv.Atoi(scanner.Text())
+		out = append(out, parsedNumber)
 	}
 
-	return bakfiets
+	return
 }

@@ -8,11 +8,11 @@ import (
 
 func main() {
 	start := time.Now()
-	day1.Start()
+	day1.StartPart1()
 	fmt.Println("Day1", time.Since(start))
 
 	start = time.Now()
-	day1.Start2()
+	day1.StartPart2()
 	fmt.Println("Day1:p2", time.Since(start))
 
 }
