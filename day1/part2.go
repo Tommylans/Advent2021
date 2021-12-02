@@ -1,8 +1,10 @@
 package day1
 
-import "fmt"
+import (
+	"strconv"
+)
 
-func StartPart2() {
+func StartPart2() string {
 	input := parseInput()
 
 	var avgList []int
@@ -19,5 +21,5 @@ func StartPart2() {
 		}
 	}
 
-	fmt.Println("Day1:p2 Answer", increases)
+	return strconv.Itoa(increases)
 }

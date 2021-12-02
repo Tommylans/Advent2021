@@ -1,10 +1,10 @@
 package day1
 
 import (
-	"fmt"
+	"strconv"
 )
 
-func StartPart1() {
+func StartPart1() string {
 	input := parseInput()
 
 	increases := 0
@@ -15,5 +15,5 @@ func StartPart1() {
 		}
 	}
 
-	fmt.Println("Day1 Answer", increases)
+	return strconv.Itoa(increases)
 }
