@@ -1,8 +1,6 @@
 package day2
 
-import "strconv"
-
-func StartPart2() string {
+func RunPart2() interface{} {
 	input := parseInput()
 
 	hor := 0
@@ -18,5 +16,5 @@ func StartPart2() string {
 		}
 	}
 
-	return strconv.Itoa(hor * vert)
+	return hor * vert
 }

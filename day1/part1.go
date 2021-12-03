@@ -1,10 +1,6 @@
 package day1
 
-import (
-	"strconv"
-)
-
-func StartPart1() string {
+func RunPart1() interface{} {
 	input := parseInput()
 
 	increases := 0
@@ -15,5 +11,5 @@ func StartPart1() string {
 		}
 	}
 
-	return strconv.Itoa(increases)
+	return increases
 }

@@ -4,7 +4,7 @@ import (
 	"strconv"
 )
 
-func StartPart1() string {
+func RunPart1() interface{} {
 	input := parseInput()
 
 	gammaRateRaw := findGammaRate(input)
@@ -12,7 +12,7 @@ func StartPart1() string {
 
 	epsilonRate, _ := strconv.ParseInt(flipBinary(gammaRateRaw), 2, 64)
 
-	return strconv.Itoa(int(gammaRate * epsilonRate))
+	return gammaRate * epsilonRate
 }
 
 func findGammaRate(input []string) (out string) {

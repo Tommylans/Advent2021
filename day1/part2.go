@@ -1,10 +1,6 @@
 package day1
 
-import (
-	"strconv"
-)
-
-func StartPart2() string {
+func RunPart2() interface{} {
 	input := parseInput()
 
 	var avgList []int
@@ -21,5 +17,5 @@ func StartPart2() string {
 		}
 	}
 
-	return strconv.Itoa(increases)
+	return increases
 }

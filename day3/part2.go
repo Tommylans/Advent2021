@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-func StartPart2() string {
+func RunPart2() interface{} {
 	input := parseInput()
 
 	oxygen, _ := strconv.ParseInt(scrub(input, false), 2, 64)
 	co2, _ := strconv.ParseInt(scrub(input, true), 2, 64)
 
-	return strconv.Itoa(int(oxygen * co2))
+	return oxygen * co2
 }
 
 func scrub(input []string, least bool) string {
