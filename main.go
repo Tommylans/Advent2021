@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/Tommylans/Advent2021/day1"
 	"github.com/Tommylans/Advent2021/day2"
+	"github.com/Tommylans/Advent2021/day3"
 	"time"
 )
 
@@ -19,6 +20,8 @@ func main() {
 	fmt.Println("Day1:p2", time.Since(start))
 	fmt.Println("Day1:p2 answer", day1part2)
 
+	fmt.Println()
+
 	start = time.Now()
 	day2part1 := day2.StartPart1()
 	fmt.Println("Day2:p1", time.Since(start))
@@ -29,4 +32,10 @@ func main() {
 	fmt.Println("Day2:p2", time.Since(start))
 	fmt.Println("Day2:p2 answer", day2part2)
 
+	fmt.Println()
+
+	start = time.Now()
+	day3part1 := day3.StartPart1()
+	fmt.Println("Day3:p1", time.Since(start))
+	fmt.Println("Day3:p1 answer", day3part1)
 }
