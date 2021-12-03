@@ -38,4 +38,9 @@ func main() {
 	day3part1 := day3.StartPart1()
 	fmt.Println("Day3:p1", time.Since(start))
 	fmt.Println("Day3:p1 answer", day3part1)
+
+	start = time.Now()
+	day3part2 := day3.StartPart2()
+	fmt.Println("Day3:p2", time.Since(start))
+	fmt.Println("Day3:p2 answer", day3part2)
 }

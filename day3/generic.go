@@ -17,3 +17,14 @@ func parseInput() (out []string) {
 
 	return
 }
+
+func flipBinary(input string) (out string) {
+	for _, s := range input {
+		if string(s) == "0" {
+			out += "1"
+		} else {
+			out += "0"
+		}
+	}
+	return
+}
