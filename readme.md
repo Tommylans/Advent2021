@@ -1,5 +1,5 @@
 # Advent of Code 2021
-[![.github/workflows/ci.yml](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml/badge.svg)](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml)
+[![.github/workflows/ci.yml](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml/badge.svg)](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/Tommylans/Advent2021/branch/main/graph/badge.svg?token=M91EVDR1ZY)](https://codecov.io/gh/Tommylans/Advent2021)
 ```text
                        .--------.
   *               .    |________|        .          *
