@@ -2,7 +2,6 @@ package day2
 
 import (
 	"bufio"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -12,11 +11,7 @@ type Move struct {
 	Vertical   int
 }
 
-func parseInput() (out []Move) {
-	file, _ := os.Open("./day2/input.txt")
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+func parseInput(scanner *bufio.Scanner) (out []Move) {
 	for scanner.Scan() {
 		text := scanner.Text()
 		split := strings.Split(text, " ")

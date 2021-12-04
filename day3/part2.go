@@ -1,16 +1,17 @@
 package day3
 
 import (
+	"bufio"
 	"strconv"
 )
 
-func RunPart2() interface{} {
-	input := parseInput()
+func RunPart2(scanner *bufio.Scanner) int {
+	input := parseInput(scanner)
 
 	oxygen, _ := strconv.ParseInt(scrub(input, false), 2, 64)
 	co2, _ := strconv.ParseInt(scrub(input, true), 2, 64)
 
-	return oxygen * co2
+	return int(oxygen * co2)
 }
 
 func scrub(input []string, least bool) string {

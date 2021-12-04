@@ -1,7 +1,9 @@
 package day1
 
-func RunPart2() interface{} {
-	input := parseInput()
+import "bufio"
+
+func RunPart2(scanner *bufio.Scanner) int {
+	input := parseInput(scanner)
 
 	var avgList []int
 

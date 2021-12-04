@@ -1,18 +1,19 @@
 package day3
 
 import (
+	"bufio"
 	"strconv"
 )
 
-func RunPart1() interface{} {
-	input := parseInput()
+func RunPart1(scanner *bufio.Scanner) int {
+	input := parseInput(scanner)
 
 	gammaRateRaw := findGammaRate(input)
 	gammaRate, _ := strconv.ParseInt(gammaRateRaw, 2, 64)
 
 	epsilonRate, _ := strconv.ParseInt(flipBinary(gammaRateRaw), 2, 64)
 
-	return gammaRate * epsilonRate
+	return int(gammaRate * epsilonRate)
 }
 
 func findGammaRate(input []string) (out string) {

@@ -1,7 +1,9 @@
 package day2
 
-func RunPart1() interface{} {
-	input := parseInput()
+import "bufio"
+
+func RunPart1(scanner *bufio.Scanner) int {
+	input := parseInput(scanner)
 
 	hor := 0
 	vert := 0
