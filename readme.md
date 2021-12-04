@@ -1,5 +1,5 @@
 # Advent of Code 2021
-
+[![.github/workflows/ci.yml](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml/badge.svg)](https://github.com/Tommylans/Advent2021/actions/workflows/ci.yml)
 ```text
                        .--------.
   *               .    |________|        .          *
