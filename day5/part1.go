@@ -10,7 +10,9 @@ func RunPart1(scanner *bufio.Scanner) (out int) {
 	playField := getPlayField(fieldSizeX, fieldSizeY)
 
 	for _, rule := range input {
-		playField.drawEasyLine(rule)
+		if rule.From.Y == rule.To.Y || rule.From.X == rule.To.X {
+			playField.drawEasyLine(rule)
+		}
 	}
 
 	for _, rows := range playField.Field {
@@ -36,7 +38,7 @@ func (p *PlayField) drawEasyLine(rule *Rule) {
 		x := from.X
 		y0, y1 := findRange(from.Y, to.Y)
 		for y := y0; y <= y1; y++ {
-			p.drawPixel(x, y)
+			p.Field[y][x]++
 		}
 	}
 
@@ -44,7 +46,7 @@ func (p *PlayField) drawEasyLine(rule *Rule) {
 		y := from.Y
 		x0, x1 := findRange(from.X, to.X)
 		for x := x0; x <= x1; x++ {
-			p.drawPixel(x, y)
+			p.Field[y][x]++
 		}
 	}
 }

@@ -20,7 +20,7 @@ type Rule struct {
 func parseInput(scanner *bufio.Scanner) (out []*Rule) {
 	for scanner.Scan() {
 		in := scanner.Text()
-		split := strings.Split(in, " -> ")
+		split := strings.SplitN(in, " -> ", 2)
 
 		out = append(out, &Rule{
 			From: ToCoordinate(split[0]),
@@ -32,7 +32,7 @@ func parseInput(scanner *bufio.Scanner) (out []*Rule) {
 }
 
 func ToCoordinate(string string) *Coordinate {
-	split := strings.Split(string, ",")
+	split := strings.SplitN(string, ",", 2)
 
 	x, _ := strconv.Atoi(split[0])
 	y, _ := strconv.Atoi(split[1])
@@ -51,11 +51,15 @@ func findRange(a int, b int) (int, int) {
 }
 
 func getPlayField(x int, y int) *PlayField {
-	rows := make([][]int, y+2)
-	for i := 0; i < len(rows); i++ {
-		rows[i] = make([]int, x+2)
+	sizeY := y + 2
+	sizeX := x + 2
+
+	matrix := make([][]int, sizeY)
+	rows := make([]int, sizeY*sizeX)
+	for i := 0; i < sizeY; i++ {
+		matrix[i] = rows[i*sizeX : (i+1)*sizeX]
 	}
-	return &PlayField{Field: rows}
+	return &PlayField{Field: matrix}
 }
 
 func getFieldSize(rules []*Rule) (x int, y int) {
@@ -75,10 +79,6 @@ func getFieldSize(rules []*Rule) (x int, y int) {
 	}
 
 	return
-}
-
-func (p *PlayField) drawPixel(x int, y int) {
-	p.Field[y][x]++
 }
 
 func (p PlayField) print() {

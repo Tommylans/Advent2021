@@ -25,10 +25,14 @@ func RunPart1(scanner *bufio.Scanner) int {
 }
 
 func (c *Card) CheckLineBingo() bool {
-	for _, bingoNumbers := range c.Field {
+	xSize := len(c.Field[0])
+	ySize := len(c.Field)
+
+	for y := 0; y < ySize; y++ {
 		bingo := true
-		for _, bingoNumber := range bingoNumbers {
-			if !bingoNumber.Marked {
+
+		for x := 0; x < xSize; x++ {
+			if !c.Field[y][x].Marked {
 				bingo = false
 				break
 			}
@@ -39,12 +43,13 @@ func (c *Card) CheckLineBingo() bool {
 		}
 	}
 
-	for x := 0; x < len(c.Field[0]); x++ {
+	for x := 0; x < xSize; x++ {
 		bingo := true
 
-		for y := 0; y < len(c.Field); y++ {
+		for y := 0; y < ySize; y++ {
 			if !c.Field[y][x].Marked {
 				bingo = false
+				break
 			}
 		}
 

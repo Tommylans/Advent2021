@@ -1,6 +1,8 @@
 package day4
 
-import "bufio"
+import (
+	"bufio"
+)
 
 func RunPart2(scanner *bufio.Scanner) int {
 	cards, drawn := parseInput(scanner)
@@ -10,8 +12,10 @@ func RunPart2(scanner *bufio.Scanner) int {
 	return lastBingo.SumUnmarked() * pickedNumber
 }
 
+// 1.080907ms
+
 func findLastBingo(drawn []int, cards []*Card) (int, *Card) {
-	var bingoCards []*Card
+	bingoCards := 0
 
 	for _, pickedNumber := range drawn {
 		for _, card := range cards {
@@ -23,15 +27,16 @@ func findLastBingo(drawn []int, cards []*Card) (int, *Card) {
 				}
 			}
 
-			if card.CheckLineBingo() && !card.HadBingo {
+			if !card.HadBingo && card.CheckLineBingo() {
 				card.HadBingo = true
-				bingoCards = append(bingoCards, card)
+				bingoCards++
 
-				if len(bingoCards) == len(cards) {
+				if bingoCards == len(cards) {
 					return pickedNumber, card
 				}
 			}
 		}
 	}
+
 	return 0, &Card{}
 }

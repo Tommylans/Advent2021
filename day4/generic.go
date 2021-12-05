@@ -17,24 +17,24 @@ func parseInput(scanner *bufio.Scanner) (out []*Card, numbers []int) {
 
 	scanner.Scan()
 
+	//492.042µs
+	//976.392µs
+
 	for scanner.Scan() {
 		card := &Card{
-			Field: [][]*BingoNumber{},
+			Field: [5][5]*BingoNumber{},
 		}
 		for i := 0; i < 5; i++ {
 			input := strings.TrimSpace(strings.ReplaceAll(scanner.Text(), "  ", " "))
 			rowNumbers := strings.Split(input, " ")
-			rowNumbersParsed := make([]*BingoNumber, 5)
 
 			for j, rowNumber := range rowNumbers {
 				parsedNumber, _ := strconv.Atoi(rowNumber)
-				rowNumbersParsed[j] = &BingoNumber{
+				card.Field[i][j] = &BingoNumber{
 					Label:  parsedNumber,
 					Marked: false,
 				}
 			}
-
-			card.Field = append(card.Field, rowNumbersParsed)
 			scanner.Scan()
 		}
 
@@ -51,5 +51,5 @@ type BingoNumber struct {
 
 type Card struct {
 	HadBingo bool
-	Field    [][]*BingoNumber
+	Field    [5][5]*BingoNumber
 }
