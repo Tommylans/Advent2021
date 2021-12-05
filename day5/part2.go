@@ -1,37 +1,32 @@
-package day4
+package day5
 
-import "bufio"
+import (
+	"bufio"
+)
 
-func RunPart2(scanner *bufio.Scanner) int {
-	cards, drawn := parseInput(scanner)
+func RunPart2(scanner *bufio.Scanner) (out int) {
+	input := parseInput(scanner)
+	fieldSizeY, fieldSizeX := getFieldSize(input)
+	playField := getPlayField(fieldSizeX, fieldSizeY)
 
-	pickedNumber, lastBingo := findLastBingo(drawn, cards)
+	for _, rule := range input {
+		playField.drawLine(rule)
+	}
 
-	return lastBingo.SumUnmarked() * pickedNumber
-}
-
-func findLastBingo(drawn []int, cards []*Card) (int, *Card) {
-	var bingoCards []*Card
-
-	for _, pickedNumber := range drawn {
-		for _, card := range cards {
-			for _, bingoNumbers := range card.Field {
-				for _, bingoNumber := range bingoNumbers {
-					if pickedNumber == bingoNumber.Label {
-						bingoNumber.Marked = true
-					}
-				}
-			}
-
-			if card.CheckLineBingo() && !card.HadBingo {
-				card.HadBingo = true
-				bingoCards = append(bingoCards, card)
-
-				if len(bingoCards) == len(cards) {
-					return pickedNumber, card
-				}
+	for _, rows := range playField.Field {
+		for _, col := range rows {
+			if col >= 2 {
+				out++
 			}
 		}
 	}
-	return 0, &Card{}
+
+	playField.print()
+	return
+}
+
+func (p *PlayField) drawLine(rule *Rule) {
+	//x0, x1 := rule.From.X, rule.To.X
+	//y0, y1 := rule.From.Y, rule.To.Y
+
 }

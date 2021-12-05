@@ -1,4 +1,4 @@
-package day4
+package day5
 
 import (
 	"bufio"
@@ -6,50 +6,38 @@ import (
 	"strings"
 )
 
-func parseInput(scanner *bufio.Scanner) (out []*Card, numbers []int) {
-	scanner.Scan()
+type Coordinate struct {
+	X int
+	Y int
+}
 
-	numbersSplit := strings.Split(scanner.Text(), ",")
-	for _, s := range numbersSplit {
-		atoi, _ := strconv.Atoi(s)
-		numbers = append(numbers, atoi)
-	}
+type Rule struct {
+	From *Coordinate
+	To   *Coordinate
+}
 
-	scanner.Scan()
-
+func parseInput(scanner *bufio.Scanner) (out []*Rule) {
 	for scanner.Scan() {
-		card := &Card{
-			Field: [][]*BingoNumber{},
-		}
-		for i := 0; i < 5; i++ {
-			input := strings.TrimSpace(strings.ReplaceAll(scanner.Text(), "  ", " "))
-			rowNumbers := strings.Split(input, " ")
-			rowNumbersParsed := make([]*BingoNumber, 5)
+		in := scanner.Text()
+		split := strings.Split(in, " -> ")
 
-			for j, rowNumber := range rowNumbers {
-				parsedNumber, _ := strconv.Atoi(rowNumber)
-				rowNumbersParsed[j] = &BingoNumber{
-					Label:  parsedNumber,
-					Marked: false,
-				}
-			}
-
-			card.Field = append(card.Field, rowNumbersParsed)
-			scanner.Scan()
-		}
-
-		out = append(out, card)
+		out = append(out, &Rule{
+			From: ToCoordinate(split[0]),
+			To:   ToCoordinate(split[1]),
+		})
 	}
 
 	return
 }
 
-type BingoNumber struct {
-	Label  int
-	Marked bool
-}
+func ToCoordinate(string string) *Coordinate {
+	split := strings.Split(string, ",")
 
-type Card struct {
-	HadBingo bool
-	Field    [][]*BingoNumber
+	x, _ := strconv.Atoi(split[0])
+	y, _ := strconv.Atoi(split[1])
+
+	return &Coordinate{
+		X: x,
+		Y: y,
+	}
 }
