@@ -19,6 +19,9 @@ jobs:
       - name: Build
         run: go build .
 
+      - name: Real run on runner
+        run: ./Advent2021
+
       - name: Test With Coverage
         run: go test -v  -coverprofile=coverage.txt -covermode=atomic ./...
 
