@@ -8,8 +8,8 @@ import (
 
 const (
 	inputFile   = "./input_sample.txt"
-	part1Answer = 0
-	part2Answer = 0
+	part1Answer = 5934
+	part2Answer = 26984457539
 )
 
 func TestRunPart1(t *testing.T) {
