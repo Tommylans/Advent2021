@@ -1,4 +1,4 @@
-package template
+package day7
 
 import (
 	"bufio"

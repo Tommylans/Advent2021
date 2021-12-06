@@ -1,11 +1,11 @@
-package day7
+package template
 
 import (
 	"bufio"
 	"time"
 )
 
-func RunPart1(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+func RunPart2(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
 	inputStart := time.Now()
 	inputDuration := time.Since(inputStart)
 
