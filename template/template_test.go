@@ -1,4 +1,4 @@
-package day3
+package template
 
 import (
 	"bufio"
@@ -8,8 +8,8 @@ import (
 
 const (
 	inputFile   = "./input_sample.txt"
-	part1Answer = 198
-	part2Answer = 230
+	part1Answer = 0
+	part2Answer = 0
 )
 
 func TestRunPart1(t *testing.T) {

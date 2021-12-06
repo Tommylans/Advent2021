@@ -1,10 +1,16 @@
 package day1
 
-import "bufio"
+import (
+	"bufio"
+	"time"
+)
 
-func RunPart2(scanner *bufio.Scanner) int {
+func RunPart2(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	input := parseInput(scanner)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	var avgList []int
 
 	for i := 2; i < len(input); i++ {
@@ -19,5 +25,7 @@ func RunPart2(scanner *bufio.Scanner) int {
 		}
 	}
 
-	return increases
+	logicDuration := time.Since(logicStart)
+
+	return increases, inputDuration, logicDuration
 }

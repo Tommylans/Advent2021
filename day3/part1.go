@@ -3,17 +3,22 @@ package day3
 import (
 	"bufio"
 	"strconv"
+	"time"
 )
 
-func RunPart1(scanner *bufio.Scanner) int {
+func RunPart1(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	input := parseInput(scanner)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	gammaRateRaw := findGammaRate(input)
 	gammaRate, _ := strconv.ParseInt(gammaRateRaw, 2, 64)
 
 	epsilonRate, _ := strconv.ParseInt(flipBinary(gammaRateRaw), 2, 64)
+	logicDuration := time.Since(logicStart)
 
-	return int(gammaRate * epsilonRate)
+	return int(gammaRate * epsilonRate), inputDuration, logicDuration
 }
 
 func findGammaRate(input []string) (out string) {

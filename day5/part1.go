@@ -2,18 +2,24 @@ package day5
 
 import (
 	"bufio"
+	"time"
 )
 
-func RunPart1(scanner *bufio.Scanner) (out int) {
+func RunPart1(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	input := parseInput(scanner)
 	fieldSizeY, fieldSizeX := getFieldSize(input)
 	playField := getPlayField(fieldSizeX, fieldSizeY)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	for _, rule := range input {
 		if rule.From.Y == rule.To.Y || rule.From.X == rule.To.X {
 			playField.drawEasyLine(rule)
 		}
 	}
+
+	out := 0
 
 	for _, rows := range playField.Field {
 		for _, col := range rows {
@@ -22,8 +28,9 @@ func RunPart1(scanner *bufio.Scanner) (out int) {
 			}
 		}
 	}
+	logicDuration := time.Since(logicStart)
 
-	return
+	return out, inputDuration, logicDuration
 }
 
 type PlayField struct {

@@ -3,15 +3,20 @@ package day3
 import (
 	"bufio"
 	"strconv"
+	"time"
 )
 
-func RunPart2(scanner *bufio.Scanner) int {
+func RunPart2(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	input := parseInput(scanner)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	oxygen, _ := strconv.ParseInt(scrub(input, false), 2, 64)
 	co2, _ := strconv.ParseInt(scrub(input, true), 2, 64)
+	logicDuration := time.Since(logicStart)
 
-	return int(oxygen * co2)
+	return int(oxygen * co2), inputDuration, logicDuration
 }
 
 func scrub(input []string, least bool) string {

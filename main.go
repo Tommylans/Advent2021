@@ -10,12 +10,13 @@ import (
 	"github.com/Tommylans/Advent2021/day5"
 	"os"
 	"strings"
+	"time"
 )
 
 type Exercise struct {
 	Title   string
 	Dataset string
-	Func    func(scanner *bufio.Scanner) int
+	Func    func(scanner *bufio.Scanner) (int, time.Duration, time.Duration)
 }
 
 func main() {
@@ -42,12 +43,12 @@ func main() {
 		file, _ := os.ReadFile(exercise.Dataset)
 		reader := strings.NewReader(string(file))
 		scanner := bufio.NewScanner(reader)
-		out, duration := benchFunction(func() interface{} {
-			return exercise.Func(scanner)
-		})
+
+		out, initDuration, answerDuration := exercise.Func(scanner)
 
 		printAnswer(out)
-		printDuration(duration)
+		printDuration("init", initDuration)
+		printDuration("logic", answerDuration)
 		fmt.Println()
 	}
 }

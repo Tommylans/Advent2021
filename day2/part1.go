@@ -1,10 +1,16 @@
 package day2
 
-import "bufio"
+import (
+	"bufio"
+	"time"
+)
 
-func RunPart1(scanner *bufio.Scanner) int {
+func RunPart1(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	input := parseInput(scanner)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	hor := 0
 	vert := 0
 
@@ -12,6 +18,7 @@ func RunPart1(scanner *bufio.Scanner) int {
 		hor += move.Horizontal
 		vert += move.Vertical
 	}
+	logicDuration := time.Since(logicStart)
 
-	return hor * vert
+	return hor * vert, inputDuration, logicDuration
 }

@@ -1,10 +1,16 @@
 package day4
 
-import "bufio"
+import (
+	"bufio"
+	"time"
+)
 
-func RunPart1(scanner *bufio.Scanner) int {
+func RunPart1(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	cards, drawn := parseInput(scanner)
+	inputduration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	for _, pickedNumber := range drawn {
 		for _, card := range cards {
 			for _, bingoNumbers := range card.Field {
@@ -16,12 +22,13 @@ func RunPart1(scanner *bufio.Scanner) int {
 			}
 
 			if card.CheckLineBingo() {
-				return card.SumUnmarked() * pickedNumber
+				logicDuration := time.Since(logicStart)
+				return card.SumUnmarked() * pickedNumber, inputduration, logicDuration
 			}
 		}
 	}
 
-	return 0
+	return 0, inputduration, time.Since(logicStart)
 }
 
 func (c *Card) CheckLineBingo() bool {

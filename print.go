@@ -15,18 +15,10 @@ func printHeader(text string) {
 	fmt.Println(line+"[", text, "]"+line)
 }
 
-func printDuration(duration time.Duration) {
-	fmt.Println("Time spend:", duration)
+func printDuration(prefix string, duration time.Duration) {
+	fmt.Println("Time spend on "+prefix+":", duration)
 }
 
 func printAnswer(answer interface{}) {
 	fmt.Println("Answer:", answer)
-}
-
-func benchFunction(benchFunction func() interface{}) (interface{}, time.Duration) {
-	now := time.Now()
-	out := benchFunction()
-	duration := time.Since(now)
-
-	return out, duration
 }

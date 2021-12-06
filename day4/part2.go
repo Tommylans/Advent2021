@@ -2,14 +2,19 @@ package day4
 
 import (
 	"bufio"
+	"time"
 )
 
-func RunPart2(scanner *bufio.Scanner) int {
+func RunPart2(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
+	inputStart := time.Now()
 	cards, drawn := parseInput(scanner)
+	inputDuration := time.Since(inputStart)
 
+	logicStart := time.Now()
 	pickedNumber, lastBingo := findLastBingo(drawn, cards)
+	logicDuration := time.Since(logicStart)
 
-	return lastBingo.SumUnmarked() * pickedNumber
+	return lastBingo.SumUnmarked() * pickedNumber, inputDuration, logicDuration
 }
 
 // 1.080907ms
