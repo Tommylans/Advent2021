@@ -9,6 +9,7 @@ import (
 	"github.com/Tommylans/Advent2021/day4"
 	"github.com/Tommylans/Advent2021/day5"
 	"github.com/Tommylans/Advent2021/day6"
+	"github.com/Tommylans/Advent2021/day7"
 	"os"
 	"strings"
 	"time"
@@ -40,8 +41,8 @@ func main() {
 		{Title: "Day 6 Part 1", Func: day6.RunPart1, Dataset: "./day6/input.txt"},
 		{Title: "Day 6 Part 2", Func: day6.RunPart2, Dataset: "./day6/input.txt"},
 
-		//{Title: "Day 7 Part 1", Func: day7.RunPart1, Dataset: "./day7/input.txt"},
-		//{Title: "Day 7 Part 2", Func: day7.RunPart2, Dataset: "./day7/input.txt"},
+		{Title: "Day 7 Part 1", Func: day7.RunPart1, Dataset: "./day7/input.txt"},
+		{Title: "Day 7 Part 2", Func: day7.RunPart2, Dataset: "./day7/input.txt"},
 	}
 
 	for _, exercise := range exercises {
