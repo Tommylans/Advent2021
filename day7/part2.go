@@ -21,11 +21,9 @@ func RunPart2(scanner *bufio.Scanner) (int, time.Duration, time.Duration) {
 
 func calcCostRising(input []int, des int) (total int) {
 	for _, pos := range input {
-		steps := int(math.Abs(float64(pos - des)))
+		x := int(math.Abs(float64(pos - des)))
 
-		for i := 1; i <= steps; i++ {
-			total += i
-		}
+		total += x * (x + 1) / 2
 	}
 	return
 }
